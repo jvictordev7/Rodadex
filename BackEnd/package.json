@@ -13,8 +13,11 @@
     "prisma:gen": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:deploy": "prisma migrate deploy",
+    "prisma:push": "prisma db push",
+    "prisma:studio": "prisma studio",
     "setup": "npm install && npm run prisma:gen && npm run build",
-    "vercel-build": "prisma generate && tsc"
+    "vercel-build": "prisma generate && tsc",
+    "deploy:db": "prisma db push && prisma generate"
   },
   "keywords": [],
   "author": "",
