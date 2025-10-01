@@ -71,7 +71,7 @@ export default async function handler(req, res) {
 
         const response = await axios.get('https://v3.football.api-sports.io/fixtures', {
           headers: {
-            'X-RapidAPI-Key': process.env.FOOTBALL_API_KEY || process.env.API_FOOTBALL_KEY,
+            'X-RapidAPI-Key': process.env.FOOTBALL_API_KEY,
             'X-RapidAPI-Host': 'v3.football.api-sports.io'
           },
           params: {
@@ -182,6 +182,68 @@ export default async function handler(req, res) {
         user: { id: user.id, name: user.name, email: user.email },
         token
       });
+    }
+
+          }
+    }
+
+    // Standings route - API Football
+    if (url.includes('/standings')) {
+      try {
+        const urlParams = new URLSearchParams(url.split('?')[1]);
+        const league = urlParams.get('leagueId') || urlParams.get('league') || '71';
+        const season = urlParams.get('season') || '2023';
+
+        const response = await axios.get('https://v3.football.api-sports.io/standings', {
+          headers: {
+            'X-RapidAPI-Key': process.env.FOOTBALL_API_KEY,
+            'X-RapidAPI-Host': 'v3.football.api-sports.io'
+          },
+          params: { league, season }
+        });
+
+        return res.status(200).json({
+          success: true,
+          data: response.data.response || [],
+          message: 'Standings carregados da API Football'
+        });
+      } catch (error) {
+        console.error('Erro ao buscar standings:', error);
+        return res.status(200).json({
+          success: true,
+          data: [],
+          message: 'Erro ao carregar standings'
+        });
+      }
+    }
+
+    // Teams/Media route - TheSportsDB
+    if (url.includes('/media/team') || url.includes('/teams/search')) {
+      try {
+        const urlParams = new URLSearchParams(url.split('?')[1]);
+        const teamName = urlParams.get('name') || urlParams.get('team');
+
+        if (!teamName) {
+          return res.status(400).json({ error: 'Nome do time é obrigatório' });
+        }
+
+        const response = await axios.get(`https://www.thesportsdb.com/api/v1/json/${process.env.THESPORTSDB_KEY || '123'}/searchteams.php`, {
+          params: { t: teamName }
+        });
+
+        return res.status(200).json({
+          success: true,
+          data: response.data?.teams || [],
+          message: 'Dados do time carregados do TheSportsDB'
+        });
+      } catch (error) {
+        console.error('Erro ao buscar dados do time:', error);
+        return res.status(200).json({
+          success: true,
+          data: [],
+          message: 'Erro ao carregar dados do time'
+        });
+      }
     }
 
     // Default 404

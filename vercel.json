@@ -1,5 +1,18 @@
 {
-  "buildCommand": "npm install && npx prisma generate",
+  "functions": {
+    "api/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "buildCommand": "npm install && npx prisma generate"
+      }
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
