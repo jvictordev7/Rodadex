@@ -12,7 +12,12 @@ import type {
 import { mockFixtures, mockStandings, mockUser, mockFavorites } from '../data/mockData';
 
 // Configuração base da API
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'https://rodadex.vercel.app';
+
+// Debug: Mostrar URL da API no console
+console.log('🔗 API URL configurada:', API_BASE_URL);
+console.log('🔧 VITE_API_BASE_URL:', import.meta.env.VITE_API_BASE_URL);
+console.log('🔧 VITE_API_URL:', import.meta.env.VITE_API_URL);
 
 // Flag para usar dados mock quando o backend não estiver disponível
 const USE_MOCK_DATA = false;
