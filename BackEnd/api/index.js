@@ -1,43 +1,32 @@
-// Vercel serverless function entry point
-const express = require('express');
-const cors = require('cors');
-const dotenv = require('dotenv');
-const { PrismaClient } = require('@prisma/client');
+// Vercel serverless function handler
+export default function handler(req, res) {
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', 'https://rodadex-cvmr.vercel.app');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
 
-dotenv.config();
+  // Handle preflight requests
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
 
-const app = express();
-const prisma = new PrismaClient();
+  // Health check
+  if (req.url === '/api/health' || req.url === '/health') {
+    res.status(200).json({
+      status: 'OK',
+      timestamp: new Date().toISOString(),
+      message: 'Backend funcionando na Vercel!'
+    });
+    return;
+  }
 
-// CORS configuration
-const allowedOrigins = [
-  'http://localhost:5173',
-  'https://rodadex-cvmr.vercel.app',
-  process.env.FRONTEND_URL
-].filter(origin => Boolean(origin));
-
-app.use(cors({
-  origin: allowedOrigins,
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
-
-app.use(express.json());
-
-// Health check route
-app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
+  // Default response
+  res.status(200).json({
+    message: 'Rodadex Backend API',
     timestamp: new Date().toISOString(),
-    database: 'Connected'
+    method: req.method,
+    url: req.url
   });
-});
-
-// Basic test route
-app.get('/api/test', (req, res) => {
-  res.json({ message: 'Backend funcionando na Vercel!' });
-});
-
-// For Vercel serverless
-module.exports = app;
+}
