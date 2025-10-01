@@ -1,0 +1,61 @@
+### TESTES DAS APIS DE FUTEBOL ###
+
+### 1. Próximos jogos de um time específico
+GET http://localhost:3000/api/fixtures/next?teamId=131&next=3
+Content-Type: application/json
+
+### 2. Próximos jogos da liga (Série A)
+GET http://localhost:3000/api/fixtures/league?leagueId=71&season=2025&next=10
+Content-Type: application/json
+
+### 3. Classificação da Série A
+GET http://localhost:3000/api/standings?leagueId=71&season=2025
+Content-Type: application/json
+
+### 4. Buscar times por nome
+GET http://localhost:3000/api/teams/search?name=Palmeiras&league=71
+Content-Type: application/json
+
+### 5. Dados de um time específico
+GET http://localhost:3000/api/teams/131
+Content-Type: application/json
+
+### 6. Mídia de um time (logo, escudo)
+GET http://localhost:3000/api/media/team?name=Palmeiras
+Content-Type: application/json
+
+### 7. Endpoint combinado (dados completos do time)
+GET http://localhost:3000/api/teams/combined?name=Palmeiras&next=2
+Content-Type: application/json
+
+### TESTES DE ERRO ###
+
+### 8. Erro - teamId ausente
+GET http://localhost:3000/api/fixtures/next
+Content-Type: application/json
+
+### 9. Erro - teamId inválido
+GET http://localhost:3000/api/fixtures/next?teamId=abc
+Content-Type: application/json
+
+### 10. Erro - nome do time ausente
+GET http://localhost:3000/api/media/team
+Content-Type: application/json
+
+### OUTROS TIMES PARA TESTAR ###
+
+### Flamengo
+GET http://localhost:3000/api/fixtures/next?teamId=127&next=3
+Content-Type: application/json
+
+### Corinthians
+GET http://localhost:3000/api/teams/combined?name=Corinthians&next=1
+Content-Type: application/json
+
+### Cruzeiro
+GET http://localhost:3000/api/media/team?name=Cruzeiro
+Content-Type: application/json
+
+### HEALTH CHECK
+GET http://localhost:3000/api/health
+Content-Type: application/json

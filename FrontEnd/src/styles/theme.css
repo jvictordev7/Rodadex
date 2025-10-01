@@ -1,0 +1,250 @@
+/* ===== VARIÁVEIS DE TEMA ===== */
+
+/* Tema Claro (padrão) */
+:root {
+  /* Cores principais */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --bg-card: #ffffff;
+  --bg-header: rgba(255, 255, 255, 0.95);
+  
+  /* Textos */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --text-on-primary: #ffffff;
+  
+  /* Bordas e divisores */
+  --border-primary: #e2e8f0;
+  --border-secondary: #cbd5e1;
+  --divider: #f1f5f9;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* Gradientes - Modo Claro */
+  --gradient-primary: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+  --gradient-secondary: linear-gradient(135deg, #be185d 0%, #be123c 100%);
+  --gradient-success: linear-gradient(135deg, #047857 0%, #059669 100%);
+  --gradient-warning: linear-gradient(135deg, #d97706 0%, #ea580c 100%);
+  --gradient-danger: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+  
+  /* Textos em gradientes - sempre com contraste */
+  --text-on-gradient: #ffffff;
+  
+  /* Estados */
+  --hover-bg: rgba(0, 0, 0, 0.05);
+  --active-bg: rgba(0, 0, 0, 0.1);
+  --focus-ring: rgba(102, 126, 234, 0.4);
+  
+  /* Específicos do app */
+  --team-logo-bg: #f8fafc;
+  --fixture-card-bg: #ffffff;
+  --standing-row-hover: #f8fafc;
+  --favorite-star: #fbbf24;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+}
+
+/* Tema Escuro */
+[data-theme="dark"] {
+  /* Cores principais */
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #334155;
+  --bg-card: #1e293b;
+  --bg-header: rgba(15, 23, 42, 0.95);
+  
+  /* Textos */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #64748b;
+  --text-on-primary: #ffffff;
+  
+  /* Bordas e divisores */
+  --border-primary: #334155;
+  --border-secondary: #475569;
+  --divider: #334155;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.4);
+  
+  /* Gradientes - Modo Escuro */
+  --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  --gradient-secondary: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%);
+  --gradient-success: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-warning: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+  --gradient-danger: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  
+  /* Textos em gradientes - sempre com contraste */
+  --text-on-gradient: #ffffff;
+  
+  /* Estados */
+  --hover-bg: rgba(255, 255, 255, 0.1);
+  --active-bg: rgba(255, 255, 255, 0.15);
+  --focus-ring: rgba(102, 126, 234, 0.6);
+  
+  /* Específicos do app */
+  --team-logo-bg: #334155;
+  --fixture-card-bg: #1e293b;
+  --standing-row-hover: #334155;
+  --favorite-star: #fbbf24;
+  --success-color: #10b981;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+}
+
+/* ===== TRANSIÇÕES SUAVES ===== */
+* {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease !important;
+}
+
+/* ===== ESTILOS BASE COM VARIÁVEIS ===== */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.app {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+}
+
+/* Cards e containers */
+.card, 
+.fixture-card, 
+.standing-row, 
+.favorite-card,
+.login-container,
+.register-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* Headers */
+.header,
+.home-header,
+.standings-header,
+.favorites-header {
+  background-color: var(--bg-header);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border-primary);
+}
+
+/* Textos secundários */
+.text-secondary,
+.season-info,
+.fixture-date,
+.team-points {
+  color: var(--text-secondary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Inputs e formulários */
+input, 
+textarea, 
+select {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--focus-ring);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+/* Botões */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: var(--text-on-primary);
+}
+
+.btn-secondary {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Estados hover */
+.hover-lift:hover,
+.fixture-card:hover,
+.standing-row:hover {
+  background-color: var(--standing-row-hover);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ===== BOTÕES ESPECÍFICOS ===== */
+.login-button,
+.register-button,
+.submit-button {
+  background: var(--gradient-primary);
+  color: var(--text-on-primary);
+  border: none;
+}
+
+.login-button:hover,
+.register-button:hover,
+.submit-button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.remove-favorite-btn {
+  background: var(--gradient-danger);
+  color: var(--text-on-primary);
+}
+
+.remove-favorite-btn:hover {
+  opacity: 0.9;
+}
+
+.favorite-star {
+  color: var(--favorite-star);
+}
+
+.favorite-star:hover {
+  color: #f59e0b;
+}

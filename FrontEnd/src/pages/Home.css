@@ -1,0 +1,485 @@
+/* Home Styles */
+.home {
+  min-height: calc(100vh - 80px);
+  background-color: var(--bg-primary);
+  padding: 2rem 1rem;
+}
+
+.home-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.home-header h1 {
+  font-size: 2.8rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.home-header p {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.season-info {
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: white !important;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* Tema escuro - manter cor padrão */
+[data-theme="dark"] .season-info {
+  color: var(--text-on-gradient) !important;
+}
+
+.fixtures-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.fixture-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.fixture-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-xl);
+}
+
+.fixture-info {
+  text-align: center;
+}
+
+.fixture-date {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.home-fixture-teams {
+  display: grid !important;
+  grid-template-columns: 1fr auto 1fr !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  padding: 1rem !important;
+  width: 100% !important;
+}
+
+.home .home-team {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.8rem !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  padding: 0 1rem !important;
+}
+
+.home .home-team.team-home {
+  grid-column: 1 !important;
+}
+
+.home .home-team.team-away {
+  grid-column: 3 !important;
+}
+
+.home .home-team .team-logo {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  border: 1px solid var(--border-color);
+}
+
+.home .home-team .team-logo-placeholder {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 50% !important;
+  background: var(--bg-secondary) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  flex-shrink: 0 !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+/* VS da Home - Tema Claro */
+body .home .fixtures-container .fixture-card .home-fixture-teams .vs.home-vs,
+body .home .fixtures-container .fixture-card .home-fixture-teams span.vs.home-vs,
+.home .fixture-card .home-fixture-teams .vs.home-vs,
+.home .vs.home-vs {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0.9rem !important;
+  color: white !important;
+  font-weight: bold !important;
+  background: #1e3a8a !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  border: none !important;
+  text-align: center !important;
+  justify-self: center !important;
+  grid-column: 2 !important;
+  min-width: 50px !important;
+  margin: 0 !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 100 !important;
+}
+
+/* VS da Home - Tema Escuro */
+[data-theme="dark"] body .home .fixtures-container .fixture-card .home-fixture-teams .vs.home-vs,
+[data-theme="dark"] body .home .fixtures-container .fixture-card .home-fixture-teams span.vs.home-vs,
+[data-theme="dark"] .home .fixture-card .home-fixture-teams .vs.home-vs,
+[data-theme="dark"] .home .vs.home-vs {
+  background: linear-gradient(135deg, var(--gradient-primary)) !important;
+  color: white !important;
+}
+
+.fixture-status {
+  margin-top: 0.5rem;
+}
+
+.status {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--border-primary);
+  border-top: 4px solid var(--text-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* TABLET RESPONSIVO - 768px */
+@media (max-width: 768px) {
+  .home {
+    padding: 1.5rem 1rem;
+  }
+  
+  .home-header {
+    margin-bottom: 2rem;
+  }
+  
+  .home-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .home-header p {
+    font-size: 1.1rem;
+  }
+  
+  .season-info {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.7rem;
+    color: white !important;
+  }
+  
+  [data-theme="dark"] .season-info {
+    color: var(--text-on-gradient) !important;
+  }
+  
+  .fixtures-container {
+    max-width: 100%;
+    gap: 1.2rem;
+  }
+  
+  .fixture-card {
+    padding: 1.2rem;
+    margin: 0 0.5rem;
+  }
+  
+  .home-fixture-teams {
+    gap: 0.8rem !important;
+    padding: 0.8rem !important;
+  }
+  
+  .home .home-team {
+    font-size: 0.95rem !important;
+    gap: 0.6rem !important;
+    padding: 0 0.5rem !important;
+  }
+  
+  /* Garantir que ambos os times apareçam no tablet */
+  .home .team-home,
+  .home .team-away {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* VS Mobile Tablet - Tema Claro */
+  body .home .fixtures-container .fixture-card .home-fixture-teams .vs.home-vs,
+  body .home .fixtures-container .fixture-card .home-fixture-teams span.vs.home-vs,
+  .home .fixture-card .home-fixture-teams .vs.home-vs,
+  .home .vs.home-vs {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.8rem !important;
+    min-width: 40px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 100 !important;
+    background: #1e3a8a !important;
+    color: white !important;
+  }
+  
+  /* VS Mobile Tablet - Tema Escuro */
+  [data-theme="dark"] body .home .fixtures-container .fixture-card .home-fixture-teams .vs.home-vs,
+  [data-theme="dark"] body .home .fixtures-container .fixture-card .home-fixture-teams span.vs.home-vs,
+  [data-theme="dark"] .home .fixture-card .home-fixture-teams .vs.home-vs,
+  [data-theme="dark"] .home .vs.home-vs {
+    background: linear-gradient(135deg, var(--gradient-primary)) !important;
+    color: white !important;
+  }
+  
+  .home .home-team .team-logo,
+  .home .home-team .team-logo-placeholder {
+    width: 24px !important;
+    height: 24px !important;
+  }
+}
+
+/* MOBILE RESPONSIVO - 480px */
+@media (max-width: 480px) {
+  .home {
+    padding: 1rem 0.8rem;
+  }
+  
+  .home-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-header h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  .home-header p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .season-info {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    color: white !important;
+  }
+  
+  [data-theme="dark"] .season-info {
+    color: var(--text-on-gradient) !important;
+  }
+  
+  .fixtures-container {
+    gap: 1rem;
+  }
+  
+  .fixture-card {
+    padding: 1rem;
+    margin: 0 0.2rem;
+    border-radius: 12px;
+  }
+  
+  .fixture-date {
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .home-fixture-teams {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.5rem !important;
+    text-align: center !important;
+    padding: 1rem !important;
+  }
+  
+  /* FORÇAR TODOS OS FILHOS A APARECEREM */
+  .home-fixture-teams > * {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .home .home-team {
+    justify-content: center !important;
+    font-size: 0.85rem !important;
+    padding: 0.3rem !important;
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+  }
+  
+  /* Garantir que ambos os times apareçam na mesma linha */
+  .home .team-home,
+  .home .team-away {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex: 1 !important;
+  }
+  
+  /* VS NO MEIO DOS TIMES - MOBILE - Tema Claro */
+  .home .vs.home-vs {
+    display: flex !important;
+    background: #1e3a8a !important;
+    color: white !important;
+    padding: 0.3rem 0.6rem !important;
+    border-radius: 6px !important;
+    font-size: 0.7rem !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    min-width: 40px !important;
+  }
+  
+  /* VS NO MEIO DOS TIMES - MOBILE - Tema Escuro */
+  [data-theme="dark"] .home .vs.home-vs {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+    color: white !important;
+  }
+  
+  .home .home-team .team-logo,
+  .home .home-team .team-logo-placeholder {
+    width: 20px !important;
+    height: 20px !important;
+  }
+  
+  .status {
+    font-size: 0.75rem;
+  }
+}
+
+/* MOBILE PEQUENO - 380px */
+@media (max-width: 380px) {
+  .home {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .home-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  .home-header p {
+    font-size: 0.9rem;
+  }
+  
+  .fixture-card {
+    padding: 0.8rem;
+    margin: 0;
+  }
+  
+  .home-fixture-teams {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 0.4rem !important;
+    text-align: center !important;
+    padding: 0.8rem !important;
+  }
+  
+  /* FORÇAR TODOS OS FILHOS A APARECEREM */
+  .home-fixture-teams > * {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  .home .home-team {
+    font-size: 0.75rem !important;
+    gap: 0.3rem !important;
+    flex: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  /* Garantir que ambos os times apareçam na mesma linha */
+  .home .team-home,
+  .home .team-away {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex: 1 !important;
+  }
+  
+  .home .home-team .team-logo,
+  .home .home-team .team-logo-placeholder {
+    width: 16px !important;
+    height: 16px !important;
+    font-size: 8px !important;
+  }
+  
+  /* VS NO MEIO DOS TIMES - MOBILE PEQUENO - Tema Claro */
+  .home .vs.home-vs {
+    display: flex !important;
+    background: #1e3a8a !important;
+    color: white !important;
+    padding: 0.25rem 0.5rem !important;
+    border-radius: 4px !important;
+    font-size: 0.65rem !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    min-width: 35px !important;
+  }
+  
+  /* VS NO MEIO DOS TIMES - MOBILE PEQUENO - Tema Escuro */
+  [data-theme="dark"] .home .vs.home-vs {
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+    color: white !important;
+  }
+}

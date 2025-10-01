@@ -1,0 +1,17 @@
+{
+  "watch": ["dist"],
+  "ignore": [
+    "node_modules",
+    "*.log",
+    "*.md",
+    ".git",
+    ".env.*",
+    "test-*",
+    "*.backup",
+    "coverage",
+    "*.test.ts",
+    "*.spec.ts"
+  ],
+  "ext": "js",
+  "delay": 1000
+}

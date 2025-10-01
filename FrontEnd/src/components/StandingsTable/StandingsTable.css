@@ -1,0 +1,182 @@
+.standings-table-container {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.standings-table {
+  width: 100%;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px 30px 30px 30px 30px 40px 40px 50px;
+  gap: 8px;
+  background: #1e3c72;
+  color: white;
+  padding: 1rem 0.5rem;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px 30px 30px 30px 30px 40px 40px 50px;
+  gap: 8px;
+  padding: 0.8rem 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+  align-items: center;
+  transition: background 0.2s ease;
+}
+
+.table-row:hover {
+  background: #f7fafc;
+}
+
+.table-row.clickable {
+  cursor: pointer;
+}
+
+.position-column {
+  text-align: center;
+  font-weight: bold;
+  color: #2d3748;
+}
+
+.team-column {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.team-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.team-name {
+  font-weight: 600;
+  color: #2d3748;
+  font-size: 0.85rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stats-column {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #4a5568;
+}
+
+.stats-column.points {
+  font-weight: bold;
+  color: #1e3c72;
+  font-size: 0.9rem;
+}
+
+.stats-column.wins {
+  color: #38a169;
+}
+
+.stats-column.draws {
+  color: #d69e2e;
+}
+
+.stats-column.losses {
+  color: #e53e3e;
+}
+
+.stats-column.goal-diff {
+  font-weight: 500;
+}
+
+.standings-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border-top: 1px solid #e2e8f0;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: #4a5568;
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .table-header, .table-row {
+    grid-template-columns: 30px 1fr 35px 25px 25px 25px 25px 35px 35px 40px;
+    padding: 0.6rem 0.3rem;
+    font-size: 0.7rem;
+    gap: 4px;
+  }
+  
+  .team-logo {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .team-name {
+    font-size: 0.75rem;
+  }
+  
+  .standings-legend {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .legend-item {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-header, .table-row {
+    grid-template-columns: 25px 1fr 30px 20px 20px 20px 20px 30px 30px 35px;
+    padding: 0.5rem 0.2rem;
+    font-size: 0.65rem;
+    gap: 2px;
+  }
+  
+  .team-column {
+    gap: 0.3rem;
+  }
+  
+  .team-logo {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .team-name {
+    font-size: 0.7rem;
+  }
+}
+
+/* Scrolling horizontal em telas muito pequenas */
+@media (max-width: 350px) {
+  .standings-table-container {
+    overflow-x: auto;
+  }
+  
+  .standings-table {
+    min-width: 350px;
+  }
+}

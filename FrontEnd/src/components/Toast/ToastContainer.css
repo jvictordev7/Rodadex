@@ -1,0 +1,35 @@
+/* Toast Container Styles */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  pointer-events: none;
+  max-height: calc(100vh - 40px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.toast-container .toast {
+  pointer-events: all;
+}
+
+/* Responsive positioning */
+@media (max-width: 768px) {
+  .toast-container {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .toast-container {
+    top: 80px; /* Abaixo do header em mobile */
+    right: 0;
+    left: 0;
+    padding: 0 16px;
+  }
+}

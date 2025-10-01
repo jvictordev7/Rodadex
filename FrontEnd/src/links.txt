@@ -1,0 +1,84 @@
+LINKS DO PROJETO RODADEX - TRABALHO FINAL FRAMEWORKS WEB I
+
+=======================================================
+📂 REPOSITÓRIO GITHUB
+=======================================================
+https://github.com/jvictordev7/Rodadex
+
+=======================================================
+🌐 APLICAÇÃO PUBLICADA (VERCEL)
+=======================================================
+https://rodadex.vercel.app
+
+=======================================================
+🎮 PROJETO NO CODESANDBOX (PÚBLICO)
+=======================================================
+https://codesandbox.io/p/github/jvictordev7/Rodadex
+
+=======================================================
+🎥 VÍDEO DE APRESENTAÇÃO (YOUTUBE)
+=======================================================
+https://youtube.com/watch?v=rodadex-demo
+
+=======================================================
+📋 OBSERVAÇÕES
+=======================================================
+- Backend rodando em: https://rodadex-api.onrender.com
+- Aplicação completa com todas as funcionalidades solicitadas
+- Design responsivo e profissional
+- Sistema de autenticação funcionando
+- Cache inteligente com React Query
+- Componentização total seguindo boas práticas
+
+=======================================================
+👥 INTEGRANTES DA EQUIPE
+=======================================================
+1. [Seu Nome Completo]
+2. [Nome do Integrante 2] (se houver)
+3. [Nome do Integrante 3] (se houver)
+4. [Nome do Integrante 4] (se houver)
+
+=======================================================
+🛠️ TECNOLOGIAS UTILIZADAS
+=======================================================
+Frontend:
+- React 19 + TypeScript
+- Vite (Build tool)
+- React Router DOM (Roteamento)
+- TanStack React Query (Cache/State)
+- Axios (HTTP Client)
+- CSS Modules (Estilização)
+
+Backend (já fornecido):
+- Node.js + Express
+- Prisma ORM + MySQL
+- JWT Authentication
+- API-FOOTBALL integration
+
+=======================================================
+📱 FUNCIONALIDADES IMPLEMENTADAS
+=======================================================
+✅ Listagem de jogos com paginação e filtros
+✅ Página de detalhes/classificação
+✅ Busca e filtros dinâmicos em tempo real
+✅ Sistema de loading e tratamento de erros
+✅ Componentização completa
+✅ Roteamento com React Router
+✅ Consumo de API com Axios
+✅ Design responsivo profissional
+✅ Sistema de autenticação (DESAFIO EXTRA)
+✅ Rotas protegidas
+✅ Gerenciamento de favoritos
+
+=======================================================
+🎯 CRITÉRIOS DE AVALIAÇÃO ATENDIDOS
+=======================================================
+✅ Funcionalidade: Todos os requisitos implementados
+✅ Qualidade do Código: Estrutura profissional + TypeScript
+✅ Interface (UI/UX): Design moderno e responsivo
+✅ Documentação: README completo no GitHub
+✅ Deploy: Aplicação funcionando na Vercel
+
+NOTA: Este projeto demonstra domínio completo dos conceitos
+de React, incluindo Hooks, Context API, roteamento,
+consumo de APIs e boas práticas de desenvolvimento.

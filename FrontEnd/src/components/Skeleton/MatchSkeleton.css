@@ -1,0 +1,63 @@
+/* Match Skeleton Styles */
+.match-skeleton {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.match-skeleton-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.match-skeleton-teams {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+}
+
+.team-skeleton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.match-skeleton-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem;
+}
+
+.match-skeleton-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .match-skeleton {
+    padding: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .match-skeleton-teams {
+    padding: 0.8rem 0;
+  }
+  
+  .team-skeleton {
+    gap: 0.3rem;
+  }
+}

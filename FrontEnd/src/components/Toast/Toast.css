@@ -1,0 +1,243 @@
+/* Toast Styles */
+.toast {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  min-width: 300px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 12px;
+  box-shadow: var(--shadow-xl);
+  margin-bottom: 12px;
+  overflow: hidden;
+  position: relative;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.toast-visible {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast-exiting {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Toast Content */
+.toast-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 12px;
+}
+
+.toast-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.toast-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+
+.toast-message {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  word-wrap: break-word;
+}
+
+.toast-actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.toast-action-btn {
+  background: transparent;
+  border: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.toast-action-btn:hover {
+  background: var(--hover-bg);
+  border-color: var(--border-secondary);
+}
+
+.toast-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  line-height: 1;
+}
+
+.toast-close-btn:hover {
+  background: var(--hover-bg);
+  color: var(--text-secondary);
+}
+
+/* Progress Bar */
+.toast-progress {
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  animation: toast-progress-shrink linear forwards;
+}
+
+@keyframes toast-progress-shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* Toast Types */
+.toast-success {
+  border-left: 4px solid #10b981;
+}
+
+.toast-error {
+  border-left: 4px solid #ef4444;
+}
+
+.toast-warning {
+  border-left: 4px solid #f59e0b;
+}
+
+.toast-info {
+  border-left: 4px solid #3b82f6;
+}
+
+/* Success Toast */
+.toast-success .toast-title {
+  color: #065f46;
+}
+
+.toast-success .toast-message {
+  color: #047857;
+}
+
+/* Error Toast */
+.toast-error .toast-title {
+  color: #991b1b;
+}
+
+.toast-error .toast-message {
+  color: #dc2626;
+}
+
+/* Warning Toast */
+.toast-warning .toast-title {
+  color: #92400e;
+}
+
+.toast-warning .toast-message {
+  color: #d97706;
+}
+
+/* Info Toast */
+.toast-info .toast-title {
+  color: #1e40af;
+}
+
+.toast-info .toast-message {
+  color: #2563eb;
+}
+
+/* Hover Effects */
+.toast:hover {
+  transform: translateX(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15), 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.toast:hover .toast-progress {
+  animation-play-state: paused;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .toast {
+    max-width: calc(100vw - 32px);
+    min-width: calc(100vw - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+  
+  .toast-content {
+    padding: 14px;
+    gap: 10px;
+  }
+  
+  .toast-title {
+    font-size: 13px;
+  }
+  
+  .toast-message {
+    font-size: 12px;
+  }
+}
+
+/* Dark mode support (preparação) */
+@media (prefers-color-scheme: dark) {
+  .toast {
+    background: #1f2937;
+    color: #f9fafb;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .toast-title {
+    color: #f9fafb;
+  }
+  
+  .toast-message {
+    color: #d1d5db;
+  }
+  
+  .toast-action-btn {
+    border-color: #374151;
+    color: #f9fafb;
+  }
+  
+  .toast-action-btn:hover {
+    background: #374151;
+    border-color: #4b5563;
+  }
+  
+  .toast-close-btn {
+    color: #9ca3af;
+  }
+  
+  .toast-close-btn:hover {
+    background: #374151;
+    color: #d1d5db;
+  }
+}

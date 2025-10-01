@@ -1,0 +1,94 @@
+/* Standing Skeleton Styles */
+.standings-skeleton {
+  background: white;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.standings-skeleton-header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.standing-row-skeleton {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f8f9fa;
+  gap: 1rem;
+}
+
+.standing-row-skeleton:last-child {
+  border-bottom: none;
+}
+
+.standing-position {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.standing-team {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex: 1;
+  min-width: 150px;
+}
+
+.standing-stats {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.standing-favorite {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Variações de posição */
+.standing-row-skeleton:nth-child(2),
+.standing-row-skeleton:nth-child(3),
+.standing-row-skeleton:nth-child(4),
+.standing-row-skeleton:nth-child(5) {
+  background-color: rgba(76, 175, 80, 0.05);
+}
+
+.standing-row-skeleton:nth-child(6),
+.standing-row-skeleton:nth-child(7) {
+  background-color: rgba(255, 193, 7, 0.05);
+}
+
+.standing-row-skeleton:nth-child(-n+4) {
+  background-color: rgba(76, 175, 80, 0.08);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .standings-skeleton {
+    padding: 1rem;
+  }
+  
+  .standing-stats {
+    gap: 1rem;
+  }
+  
+  .standing-team {
+    min-width: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .standing-stats {
+    gap: 0.5rem;
+  }
+  
+  .standing-row-skeleton {
+    gap: 0.5rem;
+  }
+}

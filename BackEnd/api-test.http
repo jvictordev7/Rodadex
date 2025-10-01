@@ -1,0 +1,45 @@
+### Health Check
+GET http://localhost:3000/api/health
+
+### Registro de usuário
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "João Teste",
+  "email": "joao.teste@email.com",
+  "password": "senha123"
+}
+
+### Login
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "joao.teste@email.com",
+  "password": "senha123"
+}
+
+### Dados do usuário (substitua o token)
+GET http://localhost:3000/api/auth/me
+Authorization: Bearer seu_token_aqui
+
+### Classificação do campeonato
+GET http://localhost:3000/api/football/standings
+
+### Partidas
+GET http://localhost:3000/api/football/matches
+
+### Favoritos (substitua o token)
+GET http://localhost:3000/api/favorites
+Authorization: Bearer seu_token_aqui
+
+### Adicionar favorito (substitua o token)
+POST http://localhost:3000/api/favorites
+Content-Type: application/json
+Authorization: Bearer seu_token_aqui
+
+{
+  "teamId": 131,
+  "teamName": "Palmeiras"
+}

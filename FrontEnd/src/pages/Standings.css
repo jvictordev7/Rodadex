@@ -1,0 +1,727 @@
+/* Standings Styles */
+.standings {
+  min-height: calc(100vh - 80px);
+  background-color: var(--bg-primary);
+  padding: 2rem 1rem;
+}
+
+.standings-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.standings-header h1 {
+  font-size: 2.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.season-info {
+  display: inline-block;
+  background: var(--gradient-primary);
+  color: var(--text-on-gradient);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+  box-shadow: var(--shadow-md);
+}
+
+.standings-table {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: var(--shadow-xl);
+}
+
+.standings-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.standings-table th {
+  background: var(--gradient-primary);
+  color: var(--text-on-primary);
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.standings-table td {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease;
+}
+
+.standings-table tr:hover td {
+  background-color: var(--standing-row-hover);
+}
+
+/* Team Row Clickable */
+.team-row {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.team-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.team-row:active {
+  transform: translateY(0);
+}
+
+/* FILTROS INTELIGENTES */
+.filters-section {
+  max-width: 1000px;
+  margin: 0 auto 2rem auto;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+}
+
+/* Campo de Busca */
+.search-container {
+  margin-bottom: 1.5rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 50px;
+  color: var(--text-primary);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-2px);
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* Botões de Filtro */
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.filter-btn {
+  background: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.filter-btn:hover::before {
+  left: 100%;
+}
+
+.filter-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.filter-btn.active {
+  background: linear-gradient(135deg, var(--gradient-primary));
+  color: white;
+  border-color: var(--primary-color);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-2px);
+}
+
+/* Estilos específicos por filtro */
+.filter-btn.libertadores.active {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-color: #22c55e;
+}
+
+.filter-btn.pre-libertadores.active {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-color: #3b82f6;
+}
+
+.filter-btn.sulamericana.active {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  border-color: #f59e0b;
+}
+
+.filter-btn.rebaixamento.active {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  border-color: #ef4444;
+}
+
+.filter-btn.favoritos.active {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  border-color: #fbbf24;
+}
+
+/* Contador de Resultados */
+.results-count {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  background: var(--bg-primary);
+  border-radius: 15px;
+  border: 1px solid var(--border-color);
+}
+
+.filter-active {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Estados Vazios */
+.empty-results {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-secondary);
+}
+
+.empty-results h3 {
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.empty-results p {
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.clear-filters-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.clear-filters-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Animações */
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-in-up {
+  animation: slide-in-up 0.6s ease-out;
+}
+
+/* TABLET RESPONSIVO - 768px */
+@media (max-width: 768px) {
+  .standings {
+    padding: 1.5rem 1rem;
+  }
+  
+  .standings-header {
+    margin-bottom: 2rem;
+  }
+  
+  .standings-header h1 {
+    font-size: 2.2rem;
+  }
+  
+  .season-info {
+    font-size: 0.85rem;
+    padding: 0.25rem 0.7rem;
+  }
+  
+  .filters-section {
+    margin: 0 0.5rem 2rem 0.5rem;
+    padding: 1rem;
+  }
+  
+  .filter-buttons {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+  
+  .filter-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.8rem;
+  }
+  
+  .standings-table {
+    max-width: 100%;
+    margin: 0 0.5rem;
+  }
+  
+  .standings-table th,
+  .standings-table td {
+    padding: 0.8rem 0.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .team-info .team-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .team-info .team-name {
+    font-size: 0.9rem;
+  }
+  
+  /* Garantir que desktop mantenha layout original */
+  .team-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+/* MOBILE RESPONSIVO - 480px */
+@media (max-width: 480px) {
+  .standings {
+    padding: 1rem 0.8rem;
+  }
+  
+  .standings-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .standings-header h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+  
+  /* Linhas da tabela mais compactas */
+  .standings-table tbody tr {
+    height: auto;
+    min-height: 35px;
+  }
+  
+  .season-info {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .filters-section {
+    margin: 0 0 1.5rem 0;
+    padding: 0.8rem;
+  }
+  
+  .filter-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  
+  .filter-btn {
+    width: 100%;
+    max-width: 200px;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .standings-table {
+    margin: 0;
+    border-radius: 10px;
+  }
+  
+  /* Esconder colunas menos importantes no mobile - MANTÉM FAVORITO VISÍVEL */
+  .standings-table th:nth-child(5),
+  .standings-table td:nth-child(5),
+  .standings-table th:nth-child(6),
+  .standings-table td:nth-child(6),
+  .standings-table th:nth-child(7),
+  .standings-table td:nth-child(7) {
+    display: none;
+  }
+  
+  .standings-table th,
+  .standings-table td {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.8rem;
+    line-height: 1.2;
+  }
+  
+  /* Logo e nome do time na mesma linha horizontal */
+  .team-info {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.4rem !important;
+  }
+  
+  .team-info .team-logo {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .team-info .team-logo-placeholder {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  .team-info .team-name,
+  .team-info span {
+    font-size: 0.8rem !important;
+    line-height: 1.1 !important;
+  }
+  
+  .standings-table tr:nth-child(1) td:first-child {
+    width: 25px;
+    height: 25px;
+    font-size: 0.7rem;
+  }
+  
+  /* Botão de favorito no mobile - 480px */
+  .favorite-cell {
+    width: 35px !important;
+    text-align: center !important;
+  }
+  
+  .favorite-btn {
+    font-size: 1rem !important;
+    padding: 0.3rem !important;
+    min-width: 30px !important;
+    min-height: 30px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+/* MOBILE PEQUENO - 380px */
+@media (max-width: 380px) {
+  .standings {
+    padding: 0.8rem 0.5rem;
+  }
+  
+  .standings-header h1 {
+    font-size: 1.6rem;
+  }
+  
+  /* Linhas ainda mais compactas para telas muito pequenas */
+  .standings-table tbody tr {
+    height: auto;
+    min-height: 30px;
+  }
+  
+  .filter-btn {
+    max-width: 180px;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  /* Mostrar apenas colunas essenciais - MANTÉM FAVORITO VISÍVEL */
+  .standings-table th:nth-child(5),
+  .standings-table td:nth-child(5),
+  .standings-table th:nth-child(6),
+  .standings-table td:nth-child(6) {
+    display: none;
+  }
+  
+  .standings-table th,
+  .standings-table td {
+    padding: 0.3rem 0.1rem;
+    font-size: 0.75rem;
+    line-height: 1.1;
+  }
+  
+  /* Logo e nome do time na mesma linha horizontal */
+  .team-info {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.3rem !important;
+  }
+  
+  .team-info .team-logo {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  
+  .team-info .team-logo-placeholder {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  
+  .team-info .team-name,
+  .team-info span {
+    font-size: 0.7rem !important;
+    line-height: 1 !important;
+  }
+  
+  /* Botão de favorito no mobile pequeno - 380px */
+  .favorite-cell {
+    width: 30px !important;
+    text-align: center !important;
+  }
+  
+  .favorite-btn {
+    font-size: 0.9rem !important;
+    padding: 0.2rem !important;
+    min-width: 25px !important;
+    min-height: 25px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
+.standings-table tr:nth-child(1) td:first-child {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
+  color: #333;
+  font-weight: bold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+}
+
+.standings-table tr:nth-child(2) td:first-child,
+.standings-table tr:nth-child(3) td:first-child,
+.standings-table tr:nth-child(4) td:first-child {
+  background: linear-gradient(135deg, #c0f0c0 0%, #a8e6a8 100%);
+  color: #333;
+  font-weight: bold;
+}
+
+.standings-table tr:nth-child(2) td:nth-child(2),
+.standings-table tr:nth-child(3) td:nth-child(2),
+.standings-table tr:nth-child(4) td:nth-child(2) {
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.team-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.team-logo {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.team-logo-placeholder {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  opacity: 0.5;
+}
+
+/* Posições especiais */
+.first-place .position {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
+  color: #333;
+  font-weight: bold;
+  border-radius: 50%;
+}
+
+.libertadores .team-name {
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.sulamericana .team-name {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.relegation .team-name {
+  color: var(--error-color);
+  font-weight: 600;
+}
+
+.positive {
+  color: var(--success-color);
+  font-weight: bold;
+}
+
+.negative {
+  color: var(--error-color);
+  font-weight: bold;
+}
+
+/* Botões de favoritos */
+.favorite-cell {
+  text-align: center;
+  width: 40px;
+}
+
+.favorite-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  color: var(--text-muted);
+}
+
+.favorite-btn:hover {
+  background: var(--hover-bg);
+  transform: scale(1.1);
+}
+
+.favorite-btn.favorited {
+  color: var(--favorite-star);
+  text-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+
+.favorite-btn.favorited:hover {
+  color: #f59e0b;
+}
+
+.legend {
+  max-width: 1000px;
+  margin: 2rem auto 0;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border-primary);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.legend-color.first-place {
+  background: linear-gradient(135deg, #ffd700 0%, #ffed4a 100%);
+}
+
+.legend-color.libertadores {
+  background: var(--info-color);
+}
+
+.legend-color.sulamericana {
+  background: var(--success-color);
+}
+
+.legend-color.relegation {
+  background: var(--error-color);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  color: white;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255,255,255,0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+  .standings-header h1 {
+    font-size: 2rem;
+  }
+  
+  .standings-table th,
+  .standings-table td {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.9rem;
+  }
+  
+  .standings-table th:nth-child(4),
+  .standings-table th:nth-child(5),
+  .standings-table th:nth-child(6),
+  .standings-table th:nth-child(7),
+  .standings-table td:nth-child(4),
+  .standings-table td:nth-child(5),
+  .standings-table td:nth-child(6),
+  .standings-table td:nth-child(7) {
+    display: none;
+  }
+  
+  .legend {
+    gap: 1rem;
+  }
+  
+  .legend-item {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
