@@ -7,12 +7,14 @@
   "scripts": {
     "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\"",
     "dev:simple": "tsc && node dist/index.js",
-    "build": "tsc",
+    "build": "prisma generate && tsc",
     "start": "node dist/index.js",
     "start:bg": "start /B node dist/index.js",
     "prisma:gen": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "setup": "npm install && npm run prisma:gen && npm run build"
+    "prisma:deploy": "prisma migrate deploy",
+    "setup": "npm install && npm run prisma:gen && npm run build",
+    "vercel-build": "prisma generate && tsc"
   },
   "keywords": [],
   "author": "",

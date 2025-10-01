@@ -51,7 +51,13 @@ process.on('SIGTERM', async () => {
   process.exit(0);
 });
 
-app.listen(port, () => {
-  console.log(`🚀 Servidor rodando na porta ${port}`);
-  console.log(`📊 Health check disponível em http://localhost:${port}/api/health`);
-});
+// Para desenvolvimento local
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(port, () => {
+    console.log(`🚀 Servidor rodando na porta ${port}`);
+    console.log(`📊 Health check disponível em http://localhost:${port}/api/health`);
+  });
+}
+
+// Export para Vercel
+export default app;
