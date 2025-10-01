@@ -17,8 +17,14 @@ const port = process.env.PORT || 3000;
 export const prisma = new PrismaClient();
 
 // Middleware
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://rodadex-cvmr.vercel.app',
+  process.env.FRONTEND_URL
+].filter((origin): origin is string => Boolean(origin));
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: allowedOrigins,
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   allowedHeaders: ['Content-Type', 'Authorization']
