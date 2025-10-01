@@ -36,9 +36,24 @@ app.use('/api/auth', authRoutes);
 app.use('/api/favorites', favoriteRoutes);
 app.use('/api', apiFootballRoutes);
 
+// Rota raiz
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    message: 'Rodadex Backend API funcionando!',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  });
+});
+
 // Rota de health check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', timestamp: new Date().toISOString() });
+  res.json({ 
+    status: 'OK', 
+    message: 'Rodadex Backend API funcionando!',
+    timestamp: new Date().toISOString(),
+    version: '1.0.0'
+  });
 });
 
 // Middleware de tratamento de erros

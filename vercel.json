@@ -1,26 +1,17 @@
 {
+  "buildCommand": "cd BackEnd && npm install && npm run build",
+  "outputDirectory": "BackEnd/dist",
+  "installCommand": "cd BackEnd && npm install",
+  "devCommand": "cd BackEnd && npm run dev",
   "functions": {
-    "api/index.js": {
+    "BackEnd/dist/index.js": {
       "runtime": "nodejs18.x"
     }
   },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "buildCommand": "npm run vercel-build"
-      }
-    }
-  ],
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/index"
-    },
-    {
       "source": "/(.*)",
-      "destination": "/api/index"
+      "destination": "/BackEnd/dist/index.js"
     }
   ]
 }
