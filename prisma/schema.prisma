@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           BigInt     @id @default(autoincrement())
+  name         String     @db.VarChar(120)
+  email        String     @unique @db.VarChar(160)
+  passwordHash String     @map("password_hash") @db.VarChar(255)
+  provider     Provider   @default(CREDENTIALS)
+  createdAt    DateTime   @default(now()) @map("created_at")
+  favorites    Favorite[]
+
+  @@map("users")
+}
+
+model Favorite {
+  id        BigInt   @id @default(autoincrement())
+  userId    BigInt   @map("user_id")
+  teamId    Int      @map("team_id")
+  teamName  String   @map("team_name") @db.VarChar(120)
+  teamLogo  String?  @map("team_logo") @db.Text
+  createdAt DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, teamId], map: "uniq_user_team")
+  @@index([userId], map: "fk_favorites_user")
+  @@map("favorites")
+}
+
+enum Provider {
+  CREDENTIALS @map("credentials")
+  GOOGLE      @map("google")
+  GITHUB      @map("github")
+}

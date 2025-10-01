@@ -1,3 +1,12 @@
+// Imports necessários
+import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import axios from 'axios';
+
+// Inicializar Prisma
+const prisma = new PrismaClient();
+
 // Vercel serverless function with complete backend logic
 export default async function handler(req, res) {
   try {
@@ -52,43 +61,126 @@ export default async function handler(req, res) {
       });
     }
 
-    // Mock fixtures route
+    // Fixtures route - REAL API Football
     if (url.includes('/fixtures/league')) {
-      return res.status(200).json({
-        success: true,
-        data: {
-          fixtures: [
-            {
-              fixture: { id: 1, date: '2023-10-15T15:00:00Z', status: { short: 'NS' } },
-              teams: { 
-                home: { id: 1, name: 'Flamengo', logo: 'https://media.api-sports.io/football/teams/1.png' },
-                away: { id: 2, name: 'Palmeiras', logo: 'https://media.api-sports.io/football/teams/2.png' }
-              },
-              goals: { home: null, away: null }
-            }
-          ]
-        }
-      });
+      try {
+        const urlParams = new URLSearchParams(url.split('?')[1]);
+        const league = urlParams.get('league') || '71';
+        const season = urlParams.get('season') || '2023';
+        const next = urlParams.get('next') || '10';
+
+        const response = await axios.get('https://v3.football.api-sports.io/fixtures', {
+          headers: {
+            'X-RapidAPI-Key': process.env.FOOTBALL_API_KEY || process.env.API_FOOTBALL_KEY,
+            'X-RapidAPI-Host': 'v3.football.api-sports.io'
+          },
+          params: {
+            league,
+            season,
+            next
+          }
+        });
+
+        return res.status(200).json({
+          success: true,
+          data: response.data.response || [],
+          message: 'Fixtures carregados da API Football'
+        });
+      } catch (error) {
+        console.error('Erro ao buscar fixtures:', error);
+        // Fallback para dados mock se API falhar
+        return res.status(200).json({
+          success: true,
+          data: {
+            fixtures: [
+              {
+                fixture: { id: 1, date: '2023-10-15T15:00:00Z', status: { short: 'NS' } },
+                teams: { 
+                  home: { id: 1, name: 'Flamengo', logo: 'https://media.api-sports.io/football/teams/1.png' },
+                  away: { id: 2, name: 'Palmeiras', logo: 'https://media.api-sports.io/football/teams/2.png' }
+                },
+                goals: { home: null, away: null }
+              }
+            ]
+          },
+          message: 'Fallback para dados mock (API indisponível)'
+        });
+      }
     }
 
-    // Mock auth routes
+    // Auth routes - REAL com banco TiDB
     if (url.includes('/auth/register') && method === 'POST') {
       const body = JSON.parse(req.body || '{}');
-      return res.status(200).json({
-        success: true,
-        message: 'Registro mockado - backend funcionando!',
-        user: { id: 1, name: body.name || 'Teste', email: body.email || 'teste@teste.com' },
-        token: 'mock-jwt-token-' + Date.now()
+      const { name, email, password } = body;
+
+      if (!name || !email || !password) {
+        return res.status(400).json({ error: 'Nome, email e senha são obrigatórios' });
+      }
+
+      // Verificar se usuário já existe
+      const existingUser = await prisma.user.findUnique({ where: { email } });
+      if (existingUser) {
+        return res.status(400).json({ error: 'Usuário já existe com este email' });
+      }
+
+      // Hash da senha
+      const passwordHash = await bcrypt.hash(password, 10);
+
+      // Criar usuário
+      const user = await prisma.user.create({
+        data: {
+          name,
+          email,
+          passwordHash,
+          provider: 'CREDENTIALS'
+        }
+      });
+
+      // Gerar JWT
+      const token = jwt.sign(
+        { userId: user.id, email: user.email },
+        process.env.JWT_SECRET || 'fallback-secret',
+        { expiresIn: '7d' }
+      );
+
+      return res.status(201).json({
+        message: 'Usuário cadastrado com sucesso!',
+        user: { id: user.id, name: user.name, email: user.email },
+        token
       });
     }
 
     if (url.includes('/auth/login') && method === 'POST') {
       const body = JSON.parse(req.body || '{}');
+      const { email, password } = body;
+
+      if (!email || !password) {
+        return res.status(400).json({ error: 'Email e senha são obrigatórios' });
+      }
+
+      // Buscar usuário
+      const user = await prisma.user.findUnique({ where: { email } });
+      if (!user) {
+        return res.status(401).json({ error: 'Credenciais inválidas' });
+      }
+
+      // Verificar senha
+      const isValidPassword = await bcrypt.compare(password, user.passwordHash);
+      if (!isValidPassword) {
+        return res.status(401).json({ error: 'Credenciais inválidas' });
+      }
+
+      // Gerar JWT
+      const token = jwt.sign(
+        { userId: user.id, email: user.email },
+        process.env.JWT_SECRET || 'fallback-secret',
+        { expiresIn: '7d' }
+      );
+
       return res.status(200).json({
-        success: true,
-        message: 'Login mockado - backend funcionando!',
-        user: { id: 1, name: 'Usuário', email: body.email || 'teste@teste.com' },
-        token: 'mock-jwt-token-' + Date.now()
+        message: 'Login realizado com sucesso!',
+        user: { id: user.id, name: user.name, email: user.email },
+        token
       });
     }
 
