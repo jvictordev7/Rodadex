@@ -24,7 +24,6 @@ model Favorite {
   userId    BigInt   @map("user_id")
   teamId    Int      @map("team_id")
   teamName  String   @map("team_name") @db.VarChar(120)
-  teamLogo  String?  @map("team_logo") @db.Text
   createdAt DateTime @default(now()) @map("created_at")
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
@@ -37,5 +36,4 @@ model Favorite {
 enum Provider {
   CREDENTIALS @map("credentials")
   GOOGLE      @map("google")
-  GITHUB      @map("github")
 }

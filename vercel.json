@@ -1,19 +1,8 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "BackEnd/package.json", 
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/api/index"
     }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/BackEnd/src/index.ts"
-    }
-  ],
-  "functions": {
-    "BackEnd/src/index.ts": {
-      "runtime": "nodejs18.x"
-    }
-  }
+  ]
 }
