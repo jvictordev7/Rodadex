@@ -65,7 +65,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.log('Credenciais:', { email: credentials.email, password: '***' });
       
       // Tentando fazer login real no backend
-      const response = await fetch('http://localhost:3000/api/auth/login', {
+      const API_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'https://rodadex.vercel.app';
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -106,7 +107,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       console.log('Credenciais:', { name: credentials.name, email: credentials.email, password: '***' });
       
       // Fazendo registro real no backend
-      const response = await fetch('http://localhost:3000/api/auth/register', {
+      const API_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'https://rodadex.vercel.app';
+      const response = await fetch(`${API_URL}/api/auth/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

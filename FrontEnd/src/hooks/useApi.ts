@@ -2,10 +2,14 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
 
+const API_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'https://rodadex.vercel.app';
+
 const api = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL: `${API_URL}/api`,
   withCredentials: true,
 });
+
+console.log('🔗 useApi - API URL configurada:', `${API_URL}/api`);
 
 // Interceptor para adicionar token automaticamente
 api.interceptors.request.use(
